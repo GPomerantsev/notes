@@ -1,0 +1,23 @@
+{
+  "name": "notes2",
+  "version": "1.0.0",
+  "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "build": "cd webclient && npm i && npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GPomerantsev/notes.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GPomerantsev/notes/issues"
+  },
+  "homepage": "https://github.com/GPomerantsev/notes#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
