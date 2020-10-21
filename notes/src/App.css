@@ -45,7 +45,7 @@ html, body, .App, #root  {
 
 .App__list {
   height: 100%;
-  width: 200px;
+  width: 300px;
 }
 
 .App__action {
@@ -54,7 +54,6 @@ html, body, .App, #root  {
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
-  padding: 10px;
   border-right: 1px solid lightgray;
 }
 

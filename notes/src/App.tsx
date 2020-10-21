@@ -7,7 +7,6 @@ function App() {
 
   const [title, setTitle] = useState('');
   const [body, setBody] = useState('');
-  const [disabled, setDisable] = useState(true);
   const [selectedItem, setSelectedItem] = useState<string | null>(null);
   const [items, setItems] = useState([] as IItem[]);
 
@@ -16,21 +15,9 @@ function App() {
     let item = items.find(item => item.id === id) || newItem || { title: '', body: '' };
     setTitle(item.title);
     setBody(item.body);
-    setDisable(true);
   }
 
   const setActiveTitle = (title: string) => {
-    fetch(`/notes/${selectedItem}`, {
-      method: 'PUT',
-      body: JSON.stringify({
-        body,
-        title
-      }),
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      }
-    });
     setTitle(title);
     setItems(items.map(item => {
       if (item.id === selectedItem) {
@@ -42,17 +29,6 @@ function App() {
   }
 
   const setActiveBody = (body: string) => {
-    fetch(`/notes/${selectedItem}`, {
-      method: 'PUT',
-      body: JSON.stringify({
-        body,
-        title
-      }),
-      headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      }
-    });
     setBody(body);
     setItems(items.map(item => {
       if (item.id === selectedItem) {
@@ -78,12 +54,21 @@ function App() {
       console.log(id);
       setItems([{ id, title: 'Новая заметка', body: 'Текст заметки' }, ...items]);
       setActiveItem(id, { id, title: 'Новая заметка', body: 'Текст заметки' });
-      setDisable(false);
     })
   }
 
-  const enableEditor = () => {
-    setDisable(false);
+  const save = () => {
+    fetch(`/notes/${selectedItem}`, {
+      method: 'PUT',
+      body: JSON.stringify({
+        body,
+        title
+      }),
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      }
+    });
   }
 
   const removeItem = (id: string) => {
@@ -122,7 +107,7 @@ function App() {
         <div className='App__action'>
           <List className='App__list' items={items} setItems={setItems} selectedItem={selectedItem} selectedItemChangeCallback={setActiveItem} removeItem={removeItem} setSelectedItem={setSelectedItem} />
         </div>
-        {selectedItem && <Editor title={title} titleChangedCallback={setActiveTitle} body={body} bodyChangedCallback={setActiveBody} id={selectedItem} disabled={disabled} disabledChangedCallback={enableEditor} removeItem={removeItem} />}
+        {selectedItem && <Editor title={title} saveCallback={save} titleChangedCallback={setActiveTitle} body={body} bodyChangedCallback={setActiveBody} id={selectedItem} removeItem={removeItem} />}
       </div>
     </div>
   )

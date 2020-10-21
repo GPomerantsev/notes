@@ -5,7 +5,8 @@
 .List__item {
     padding: 10px 20px;
     cursor: pointer;
-    height: 56px;
+    height: 60px;
+    position: relative;
 }
 
 .List__item-selected {
@@ -17,7 +18,6 @@
     white-space: nowrap;
     overflow: hidden;
     display: flex;
-    flex-direction: row;
     justify-content: space-between;
 }
 
@@ -32,22 +32,18 @@
 
 .List__element__header {
     display: flex;
-    flex-direction: raw;
     justify-content: space-between;
 }
 
 .List__delete__item {
-    border: medium none;
-    background-image: none; 
-    background: transparent;
-    float: left;
-    background-color: transparent;
-    width: 2em;
-    height: 2em;
-    -webkit-text-fill-color: transparent;
-    outline: none;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    display: none;
 }
 
-.List__delete__item:hover {
-    -webkit-text-fill-color: black;
+.List__item:hover .List__delete__item {
+    display: block;
 }

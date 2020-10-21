@@ -26,10 +26,10 @@ export default class List extends React.Component<IProps> {
                     <li className={`List__item ${item.id === this.props.selectedItem ? 'List__item-selected' : ''}`} onClick={() => this.selectItem(item.id)}>
                         <div className='List__element__header'>
                             <div className='List__item__title'><b>{item.title}</b></div>
-                            <button className='List__delete__item' onClick={() => {
+                            <div className='List__delete__item ' onClick={() => {
                                 this.props.setSelectedItem(null)
                                 this.props.removeItem(item.id)
-                            }}>X</button>
+                            }}>&#10006;</div>
                         </div>
                         <div className='List__item__body'>{item.body}</div>
                     </li>
