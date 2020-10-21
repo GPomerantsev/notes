@@ -9,7 +9,7 @@ function App() {
   const [body, setBody] = useState('');
   const [disabled, setDisable] = useState(true);
   const [selectedItem, setSelectedItem] = useState<string | null>(null);
-  const [items, setItems] = useState([...JSON.parse(localStorage.getItem('items')!)]);
+  const [items, setItems] = useState([] as IItem[]);
 
   const setActiveItem = (id: string, newItem?: IItem) => {
     setSelectedItem(id);
@@ -71,7 +71,7 @@ function App() {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        body: 'Новая заметка', title: 'Текст заметки'
+        body: 'Текст заметки', title: 'Новая заметка'
       })
     }).then(async (res) => {
       const {id} = await res.json();
