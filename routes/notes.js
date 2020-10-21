@@ -10,7 +10,9 @@ module.exports = function(app) {
     });
     app.get('/notes', (req, res) => {
         query('find', {}).then(result => {
-            res.send(result);
+            result.toArray(function(err,result) {
+                res.send(JSON.stringify(result));
+            });
         });
     })
     app.post('/notes', (req, res) => {
