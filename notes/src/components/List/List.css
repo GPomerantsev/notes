@@ -1,0 +1,53 @@
+.List {
+    list-style: none;
+}
+
+.List__item {
+    padding: 10px 20px;
+    cursor: pointer;
+    height: 56px;
+}
+
+.List__item-selected {
+    background-color: #ebcf34;
+}
+
+.List__item__body, .List__item__title {  
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.List__Header {
+    display: flex;
+    flex-direction: column;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    margin: 10px;
+}
+
+.List__element__header {
+    display: flex;
+    flex-direction: raw;
+    justify-content: space-between;
+}
+
+.List__delete__item {
+    border: medium none;
+    background-image: none; 
+    background: transparent;
+    float: left;
+    background-color: transparent;
+    width: 2em;
+    height: 2em;
+    -webkit-text-fill-color: transparent;
+    outline: none;
+}
+
+.List__delete__item:hover {
+    -webkit-text-fill-color: black;
+}
